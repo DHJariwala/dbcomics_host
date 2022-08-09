@@ -37,7 +37,7 @@ class comics(db.Model):
 
 @app.route('/',methods=['GET','POST'])
 def home():
-    query = select(comics).order_by(desc(comics.comic_like))
+    query = select(comics).order_by(desc(comics.comic_like)).order_by(comics.comic_id)
     comicsData = db.session.execute(query)
     if request.method == 'POST':
         comic = request.form['comic']
