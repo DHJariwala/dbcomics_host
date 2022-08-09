@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>My Comic Website</title>
+    </head>
+    <style type="text/css">
+        body {
+            overflow: scroll;
+          }
+          a:focus
+          {
+            outline:none;
+          }
+      </style>
+    <body>
+      <big><big>
+        <ul class="nav justify-content-center navbar-dark bg-dark sticky-top">
+            <li class={%block add%} {% endblock %}>
+              <a class={%block addtext%} {% endblock %} href="/add"><i class="bi bi-plus-square"></i></a>
+            </li>
+            <li class={%block search%} {% endblock %}>
+              <a class={%block searchtext%} {% endblock %} href="/"><i class="bi bi-search"></i></a>
+            </li>
+          </ul></big></big>
+          <br><br>
+          {% block body %}{% endblock body %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">        
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    </body>
+</html>

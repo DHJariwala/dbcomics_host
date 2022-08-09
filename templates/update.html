@@ -1,0 +1,55 @@
+{% extends 'navbar.html' %}
+
+{% block add %}"nav-item"{% endblock add %}
+{% block addtext %}"nav-link text-primary"{% endblock addtext %}
+
+{% block search %}"nav-item bg-primary"{% endblock search %}
+{% block searchtext %}"nav-link text-dark"{% endblock searchtext %}
+
+{% block body %}
+<div class="container">
+    <div class = "row">
+        <div class="col">
+<form name="update_form" method="post" action="/doupdate">
+    <input type="text" name="comic_id" class="form-control" value='{{data.comic_id}}' hidden>
+    <label class='form-label'>Comic ID: </label><input type="text" name="comic_id_show" class="form-control" value='{{data.comic_id}}' disabled><br>
+    <label class='form-label'> Comic Name: </label> <input type="text" name ='comic_name' class='form-control' value='{{data.comic_name}}'><br>
+    <label class='form-label'>Comic Chapter Completed:</label> <input type = "number" name="chapter_chap_completed"class='form-control' value={{data.comic_chapter_completed}}><br>
+
+    
+    {% if data.comic_completed == 'no' %}
+        <label class='form-label'>Comic Completed?</label>  <select class='form-select' id="scc" onchange="document.getElementById('cc').value = document.getElementById('scc').value;">
+        <option value="no" selected >no</option>
+        <option value="yes" >yes</option>
+    </select><br>{% endif %}
+    {% if data.comic_completed == 'yes' %}
+        <label class='form-label'>Comic Completed?</label>  <select  class='form-select' id="scc" onchange="document.getElementById('cc').value = document.getElementById('scc').value;">
+        <option value="no">no</option>
+        <option value="yes" selected>yes</option>
+    </select><br>{% endif %}
+    <input type="text" name = "comic_completed" id="cc" value = {{data.comic_completed}} hidden>
+
+    <label class='form-label'>Comic From?</label> <input type="text" name="comic_from" class='form-control' value={{data.comic_from}}><br>
+    <label class='form-label'>Comic URL </label><input type="text" name="comic_url" class='form-control' value={{data.comic_url}}><br>
+
+    {% if data.comic_reading == 'no' %}
+    <label class='form-label'>Currently Reading?</label> <select class='form-select' id="scr" onchange="document.getElementById('cr').value = document.getElementById('scr').value;">
+        <option value="no" selected>no</option>
+        <option value="yes" >yes</option>
+    </select><br>
+    {% endif %}
+    {% if data.comic_reading == 'yes' %}
+    <label class='form-label'>Currently Reading?</label> <select class='form-select' id="scr" onchange="document.getElementById('cr').value = document.getElementById('scr').value;">
+        <option value="no">no</option>
+        <option value="yes" selected>yes</option>
+    </select><br>
+    {% endif %}
+    <input type="text" name="comic_reading" id="cr" value={{data.comic_reading}} hidden>
+
+    <button type="submit" class="btn btn-outline-primary">Update</button>
+    <input type="button" value="Cancel" onclick="history.back()" class="btn btn-outline-secondary">
+</form>
+</div>
+</div>
+</div>
+{% endblock body %}

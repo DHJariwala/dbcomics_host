@@ -1,0 +1,35 @@
+{% extends 'navbar.html' %}
+
+{% block add %}"nav-item bg-primary"{% endblock add %}
+{% block addtext %}"nav-link text-dark"{% endblock addtext %}
+
+{% block search %}"nav-item"{% endblock search %}
+{% block searchtext %}"nav-link text-primary"{% endblock searchtext %}
+
+{% block body %}
+<div class="container">
+    <div class = "row">
+        <div class="col">
+<form name="add_form" method="post" action="/add">
+    <label class='form-label'> Comic Name: </label> <input type="text" name ='comic_name' class='form-control'><br>
+    <label class='form-label'>Comic Chapter Completed:</label> <input type = "number" name="chapter_chap_completed"class='form-control'><br>
+        <label class='form-label'>Comic Completed?</label>  <select name="comic_completed" class='form-select'>
+        <option value="no" selected="selected">no</option>
+        <option value="yes">yes</option>
+    </select><br>
+    <label class='form-label'>Comic From?</label> <input type="text" name="comic_from" class='form-control'><br>
+    <label class='form-label'>Comic URL </label><input type="text" name="comic_url" class='form-control'><br>
+    <label class='form-label'>Currently Reading?</label> <select name="comic_reading" class='form-select'>
+        <option value="no">no</option>
+        <option value="yes" selected="selected">yes</option>
+    </select><br>
+    <label class='form-label'>Like reading this?</label> <select name="comic_like" class='form-select'>
+        <option value="no">no</option>
+        <option value="yes" selected>yes</option>
+    </select><br>
+    <button type="submit" class="btn btn-outline-primary">Add comic</button>
+</form>
+</div>
+</div>
+</div>
+{% endblock body %}
