@@ -31,6 +31,7 @@
                 <th scope="col">Comic Name</th>
                 <th scope="col">Chapter Completed</th>
                 <th scope="col">Update</th>
+                <th scope="col">Comic Home</th>
                 <th scope="col">Link</th>
                 <th scope="col">Like</th>
             </tr>
@@ -42,7 +43,8 @@
                 <td>{{data.comic_name.capitalize()}}</td>
                 <td>{{data.comic_chapter_completed}}</td>
                 <td><big><big><big><a href="/update/{{data.comic_id}}" style="color:inherit;" ><i class="bi bi-pencil-fill"></i></a></big></big></big></td>
-                <td><a href="{{data.comic_url}}" target=”_blank”><button class="btn btn-outline-primary">Read</button></a></big></big></big></td>
+                <td><a href="{{data.comic_url}}" target=”_blank”><button class="btn btn-outline-primary"><i class="bi bi-house-door"></i></button></a></td>
+                <td><a href="{{data.comic_url}}/chapter-{{data.comic_chapter_completed}}" target=”_blank”><button class="btn btn-outline-primary">Read</button></a></td>
                 {% if data.comic_like == 1%}
                 <td><big><big><big><a href="/updatelike/{{data.comic_id}}" class='text-danger'><i class="bi bi-heart-fill"></i></a></big></big></big></td>
                 {% endif %}
