@@ -6,8 +6,8 @@ from sqlalchemy import desc,select,update
 #Config
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'abc123'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///comics.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://pvaarthoxuwbdz:693e223971abf0331755f2499892b898bc38f350e9a10935da1c46642f408f45@ec2-54-225-234-165.compute-1.amazonaws.com:5432/de9odpiav52fde'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///comics.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://mowyjvwjbkafsu:b1e3a478e96a4d66d637317084b249a89c4f1793be43d6ac87c70c66e1bf02c7@ec2-54-225-234-165.compute-1.amazonaws.com:5432/dtbrh26fsnmtp'
 db = SQLAlchemy(app)
 
 #Create Database
@@ -37,7 +37,7 @@ class comics(db.Model):
 
 @app.route('/',methods=['GET','POST'])
 def home():
-    query = select(comics).order_by(desc(comics.comic_like)).order_by(comics.comic_id)
+    query = select(comics).order_by(desc(comics.comic_like))
     comicsData = db.session.execute(query)
     if request.method == 'POST':
         comic = request.form['comic']
@@ -60,6 +60,20 @@ def addPage():
         db.session.commit()
         return redirect('/')
     return render_template('add.html')
+
+@app.route('/updatereading/<comicid>')
+def updatereading(comicid):
+    comic = comics.query.where(comics.comic_id == comicid).all()[0]
+    if comic.comic_reading == 'yes':
+        updateReadingText = 'no'
+    else:
+        updateReadingText = 'yes'
+    upd = update(comics)
+    val = upd.values({'comic_reading':updateReadingText})
+    cnd = val.where(comics.comic_id == comicid)
+    db.session.execute(cnd)
+    db.session.commit()
+    return redirect('/')
 
 @app.route('/updatelike/<comicid>')
 def updatelike(comicid):
