@@ -30,7 +30,9 @@
                 <th scope="col">Comic Id</th>
                 <th scope="col">Comic Name</th>
                 <th scope="col">Chapter Completed</th>
+                <th scope="col">Chapter Published</th>
                 <th scope="col">Update</th>
+                <th scope="col">Refresh</th>
                 <th scope="col">Comic Home</th>
                 <th scope="col">Link</th>
                 <th scope="col">Currently Reading</th>
@@ -46,7 +48,20 @@
 
                 <td>{{data.comic_chapter_completed}}</td>
 
+                {% if chapterData[data.comic_id] %}
+                <td>{{chapterData[data.comic_id]}}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
                 <td><big><big><big><a href="/update/{{data.comic_id}}" style="color:inherit;" ><i class="bi bi-pencil-fill"></i></a></big></big></big></td>
+
+                {% if data.comic_from == 'fkm' %}
+                <td><big><big><big><a href="/refresh/{{data.comic_id}}" style='color:inherit;'><i class="bi bi-arrow-clockwise"></i></a></big></big></td>
+                {% endif %}
+                {% if data.comic_from !='fkm' %}
+                <td>---</td>
+                {% endif %}
 
                 <td><a href="{{data.comic_url}}" target=”_blank”><button class="btn btn-outline-primary"><i class="bi bi-house-door"></i></button></a></td>
 
