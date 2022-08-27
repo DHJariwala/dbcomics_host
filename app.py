@@ -8,8 +8,8 @@ import re
 #Config
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'abc123'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///comics.db'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://pvaarthoxuwbdz:693e223971abf0331755f2499892b898bc38f350e9a10935da1c46642f408f45@ec2-54-225-234-165.compute-1.amazonaws.com:5432/de9odpiav52fde'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///comics.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://pvaarthoxuwbdz:693e223971abf0331755f2499892b898bc38f350e9a10935da1c46642f408f45@ec2-54-225-234-165.compute-1.amazonaws.com:5432/de9odpiav52fde'
 #no # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://mowyjvwjbkafsu:b1e3a478e96a4d66d637317084b249a89c4f1793be43d6ac87c70c66e1bf02c7@ec2-54-225-234-165.compute-1.amazonaws.com:5432/dtbrh26fsnmtp'
 db = SQLAlchemy(app)
 
